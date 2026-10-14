@@ -1,0 +1,6 @@
+.env*
+.clasp.json
+node_modules/
+*credentials*
+*student-export*
+.DS_Store
