@@ -31,9 +31,21 @@
 
 - 실제 Google Apps Script 웹 앱 배포/Google Sheets 라이브 읽기·쓰기
 - Google 계정/학교 정책별 승인 화면 및 비로그인 접근
-- 실제 브라우저 화면 렌더링/모바일 레이아웃/접근성 전체 점검
+- 모바일 레이아웃/접근성 전체 점검
 - 실제 학급 다수 학생 동시 접속 및 Google 서비스 할당량
 
-Chromium은 설치되어 있었지만 실행 시 `socket() failed: Operation not permitted`로 종료되었습니다. 브라우저 검증을 통과했다고 표시하지 않습니다. VM 테스트는 브라우저 렌더링이나 Google 인프라 검증을 대신하지 않습니다.
+Chromium은 설치되어 있었지만 실행 시 `socket() failed: Operation not permitted`로 종료되었습니다. 로컬 Chromium 검증은 통과하지 못했습니다. 이후 별도 클라우드 브라우저에서 아래 제한된 라이브 검증을 수행했습니다. VM 테스트는 브라우저 렌더링이나 Google 인프라 검증을 대신하지 않습니다.
 
 실제 배포 후 `app_setup.md`의 확인표로 가상 학생 두 명을 이용해 먼저 검증하세요.
+
+## GitHub Pages 라이브 검증
+
+- 2026-10-14: 커밋 `6d10dd1291e6938224f7e4af0525d2fbe881cbb8` 배포 작업 성공 확인
+- 시작 화면: https://domineyh.github.io/reading-log/
+- 클라우드 브라우저에서 시작 화면과 가상 데이터 체험 렌더링 확인
+- 미연결 안내와 실제 시작 버튼 비활성 상태 확인
+- 가상 기록 추가: 296 → 396쪽, 수정: 396 → 416쪽, 삭제: 416 → 296쪽
+- 삭제 취소 시 기록 유지, 수정 취소 시 원래 기록 유지 확인
+- 데스크톱 폭 1165px에서 문서 scrollWidth와 clientWidth가 같아 가로 넘침 없음
+- 모바일 크기 에뮬레이션 도구가 제공되지 않아 모바일 실화면 검증은 미실행
+- Google Apps Script의 실제 로그인, 학생별 권한, Sheets 저장은 여전히 미검증
